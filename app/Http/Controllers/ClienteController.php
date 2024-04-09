@@ -17,6 +17,7 @@ class ClienteController extends Controller
                 'nome' => $request->nome,
                 'telefone' => $request->telefone,
                 'endereco' => $request->endereco,
+                'cpf' => $request->cpf,
                 'email' => $request->email,
                 'password'  => Hash::make($request->password),
                 'foto' => asset('storage/'. $request->foto)
@@ -30,8 +31,8 @@ class ClienteController extends Controller
 
         if($request->hasFile('foto')){
             $foto = $request->file('foto');
-            $nomeImagem = time().'.'.$foto->getClientOriginalExtension();
-            $caminhoImagem= $foto->storeAs('imagens/clientes', $nomeImagem,'public');
+            $nomefoto = time().'.'.$foto->getClientOriginalExtension();
+            $caminhoImagem= $foto->storeAs('foto/clientes', $nomefoto,'public');
             $clienteData['foto']= $caminhoImagem;
         }
         $clientes = Cliente::create($clienteData);
