@@ -10,3 +10,4 @@ Route::post('/produtos', [ProdutoController::class, 'store']);
 
 Route::get('/cliente', [ClienteController::class, 'index']);
 Route::post('/cliente', [ClienteController::class, 'store']);
+Route::get('/exibir', [ClienteController::class, 'exibirTodosProdutos']);

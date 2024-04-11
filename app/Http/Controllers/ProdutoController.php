@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProdutoFormRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class ProdutoController extends Controller
         return response()->json($produtosComImagem);
     }
 
-    public function store(Request $request){
+    public function store(ProdutoFormRequest $request){
         $produtoData = $request->all();
 
         if($request->hasFile('imagem')){
@@ -32,6 +33,13 @@ class ProdutoController extends Controller
         }
         $produto = Produto::create($produtoData);
         return response()->json(['produto'=>$produto], 201);
+    }
+    public function exibirTodosProdutos(){
+        $produtos = Produto::all();
+        return response()->json([
+            'status' => true,
+            'data' => $produtos
+        ]);
     }
 
 }
