@@ -27,7 +27,7 @@ class ProdutoFormRequest extends FormRequest
             'nome'=> 'required|max:80|min:5',
         'preco'=> 'required|decimal:2',
         'ingredientes'=>'required',
-        'foto'=>'required'
+        'imagem'=>'required'
         ];
     }
     public function failedValidation(Validator $validator)
